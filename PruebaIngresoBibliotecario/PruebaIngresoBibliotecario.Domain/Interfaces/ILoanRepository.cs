@@ -9,8 +9,8 @@ namespace PruebaIngresoBibliotecario.Domain.Interfaces
 {
     public interface ILoanRepository
     {
-        public Task<Loan> SearchLoan(Guid Id);
-        public Task<Loan> CreateLoan(Loan Loan);
+        public Task<Loan> GetLoan(Guid Id);
+        public Task<Loan> SaveLoan(Loan Loan);
         public Task<List<Loan>> GetAll(Loan Loan);
     }
 }
