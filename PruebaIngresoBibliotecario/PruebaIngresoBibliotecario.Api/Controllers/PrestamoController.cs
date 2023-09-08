@@ -12,13 +12,13 @@ namespace PruebaIngresoBibliotecario.Api.Controllers
     {
         public IServicesLoan Services;
 
-        public PrestamoController(IServicesLoan _Services)
+        public PrestamoController(IServicesLoan _services)
         {
-            Services = _Services;
+            Services = _services;
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateLoan(CreateLoanInDto Loan)
+        public async Task<IActionResult> CreateLoan(CreateLoanInDto loan)
         {
             List<CreateLoanOutDto >LoanOut = new List<CreateLoanOutDto>();
 
@@ -26,7 +26,7 @@ namespace PruebaIngresoBibliotecario.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> SearchLoan(string Id)
+        public async Task<IActionResult> SearchLoan(string id)
         {
             List<Loan> LoanOut = new List<Loan>() ;
             
