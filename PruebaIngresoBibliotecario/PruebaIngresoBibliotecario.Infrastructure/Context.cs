@@ -11,6 +11,18 @@ namespace PruebaIngresoBibliotecario.Infrastructure
 {
     public class Context : DbContext
     {
-        
+        private readonly IConfiguration Config;
+
+        public DbSet<Loan> Loan { get; set; }
+
+        public Context(DbContextOptions<Context> options, IConfiguration config) : base(options)
+        {
+            Config = config;
+        }
+
+        public async Task CommitAsync()
+        {
+            await SaveChangesAsync().ConfigureAwait(false);
+        }
     }
 }
