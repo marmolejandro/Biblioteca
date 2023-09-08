@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace PruebaIngresoBibliotecario.Domain.Interfaces
 {
-    public interface IServicesLoan
+    public interface ILoanRepository
     {
-        public Task<bool> ValidateLoan(Loan _Loan);
-        public Loan SearchLoan(string Id);
-        public Loan CreateLoan(Loan _Loan);
+        public Task<Loan> SearchLoan(Guid Id);
+        public Task<Loan> CreateLoan(Loan Loan);
+        public Task<List<Loan>> GetAll(Loan Loan);
     }
 }
