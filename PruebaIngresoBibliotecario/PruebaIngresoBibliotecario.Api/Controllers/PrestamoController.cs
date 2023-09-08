@@ -10,8 +10,14 @@ namespace PruebaIngresoBibliotecario.Api.Controllers
     [ApiController]
     public class PrestamoController : ControllerBase
     {
+        ILoanService _loanService;
+        public PrestamoController(ILoanService loanService)
+        {
+            _loanService = loanService;
+        }
+
         [HttpPost]
-        public async Task<IActionResult> CreateLoan(CreateLoanInDto loan)
+        public async Task<IActionResult> CreateLoan(CreateLoanInDto newLoan)
         {
             return Ok();
         }
