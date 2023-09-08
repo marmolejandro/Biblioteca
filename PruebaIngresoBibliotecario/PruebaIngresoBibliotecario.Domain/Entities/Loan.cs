@@ -8,13 +8,11 @@ namespace PruebaIngresoBibliotecario.Domain.Entities
 {
     public class Loan
     {
-        public string Id { get; set; }
+        public Guid Id { get; set; }
 
-        public UserType TipoUsuario { get; set; }
+       public User User { get; set; }
 
-        public string IdentificacionUsuario { get; set; }
-
-        public Guid Isbn { get; set; }
+        public Book Book { get; set; }
 
         public DateTime FechaMaximaDevolucion { get; set; }
     }

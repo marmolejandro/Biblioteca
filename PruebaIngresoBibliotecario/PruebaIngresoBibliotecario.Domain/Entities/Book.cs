@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace PruebaIngresoBibliotecario.Domain.Entities
 {
-    public enum UserType
+    public class Book
     {
-        AFILIADO = 1,
-        EMPLEADO = 2,
-        INVITADO = 3
+        public Guid Id { get; set; }
+        public Guid Isbn { get; set; }
     }
 }
