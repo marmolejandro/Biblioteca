@@ -1,6 +1,6 @@
 # PruebaIngresoBibliotecario
 
-Prueba técnica de ingreso en donde se requiere un API REST para generar prestamos de libros para 3 tipos de usuario (Afiliado, Empleado e Invitado)
+Reto técnico en donde se requiere un API REST para generar prestamos de libros para 3 tipos de usuario (Afiliado, Empleado e Invitado)
 
 
 Reglas de negocio ---------------------------------------------------------------------------------------
