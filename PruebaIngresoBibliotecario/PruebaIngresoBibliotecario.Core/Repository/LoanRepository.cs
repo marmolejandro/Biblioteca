@@ -1,5 +1,6 @@
 ﻿using PruebaIngresoBibliotecario.Domain.Entities;
 using PruebaIngresoBibliotecario.Domain.Interfaces;
+using PruebaIngresoBibliotecario.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,11 @@ namespace PruebaIngresoBibliotecario.Core.Repository
 {
     public class LoanRepository : ILoanRepository
     {
-        public LoanRepository() { }
+        Context _context;
+        public LoanRepository(Context context)
+        {
+            _context = context;
+        }
 
         public async Task<Loan> GetLoan(Guid Id)
         {

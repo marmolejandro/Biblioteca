@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PruebaIngresoBibliotecario.Infrastructure
 {
-    public class Context :DbContext
+    public class Context : DbContext
     {
         
     }

@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PruebaIngresoBibliotecario.Domain\PruebaIngresoBibliotecario.Domain.csproj" />
+    <ProjectReference Include="..\PruebaIngresoBibliotecario.Infrastructure\PruebaIngresoBibliotecario.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
