@@ -1,11 +1,7 @@
-﻿using PruebaIngresoBibliotecario.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using PruebaIngresoBibliotecario.Domain.Entities;
 using PruebaIngresoBibliotecario.Domain.Interfaces;
 using PruebaIngresoBibliotecario.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PruebaIngresoBibliotecario.Core.Repository
 {
@@ -27,9 +23,14 @@ namespace PruebaIngresoBibliotecario.Core.Repository
             return new Loan();
         }
 
-        public async Task<List<Loan>> GetAll(Loan Loan)
+        public async Task<List<Loan>> GetAll()
         {
-            return new List<Loan>();
+            return await _context.Loan.ToListAsync();
+        }
+
+        public async Task<List<Loan>> GetLoanByIdUser(string IdUser)
+        {
+            return await _context.Loan.Where(r => r.User.IdentificacionUsuario == IdUser).ToListAsync();
         }
     }
 }

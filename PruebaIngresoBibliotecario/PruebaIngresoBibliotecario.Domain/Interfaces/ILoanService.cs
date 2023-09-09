@@ -1,17 +1,16 @@
-﻿using PruebaIngresoBibliotecario.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PruebaIngresoBibliotecario.Api.Models;
+using PruebaIngresoBibliotecario.Domain.Entities;
 
 namespace PruebaIngresoBibliotecario.Domain.Interfaces
 {
     public interface ILoanService
     {
         public Task<DateTime> CalculateDateLoan(UserType UserType);
-        public Task<bool> ValidateLoan(Loan Loan);
         public Task<Loan> GetLoan(Guid Id);
-        public Task<Loan> CreateLoan(Loan Loan);
+        public Task<Loan> SaveLoan(CreateLoanInDto Loan);
+
+        public Task<bool> ValidateLoan(string IdUser);
+        public Task<bool> ValidateUserType(UserType UserType);
+        public Task<bool> ValidateIdUser(string IdUser);
     }
 }

@@ -1,7 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using PruebaIngresoBibliotecario.Api.Models;
-using PruebaIngresoBibliotecario.Domain.Entities;
 using PruebaIngresoBibliotecario.Domain.Interfaces;
 
 namespace PruebaIngresoBibliotecario.Api.Controllers
@@ -19,6 +17,21 @@ namespace PruebaIngresoBibliotecario.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateLoan(CreateLoanInDto newLoan)
         {
+            if (!await _loanService.ValidateUserType(newLoan.TipoUsuario) ||
+                !await _loanService.ValidateIdUser(newLoan.IdentificacionUsuario))
+            {
+                return BadRequest();
+            }
+            else if (!await _loanService.ValidateLoan(newLoan.IdentificacionUsuario))
+            {
+                string message = $@"El usuario con identificación {newLoan.IdentificacionUsuario} 
+                ya tiene un libro prestado por lo cual no se le puede registrar otro prestamo";
+
+                return BadRequest(message);
+            }
+
+            _loanService.SaveLoan(newLoan);
+
             return Ok();
         }
 

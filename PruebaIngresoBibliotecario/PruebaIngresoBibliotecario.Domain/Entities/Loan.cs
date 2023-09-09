@@ -10,7 +10,7 @@ namespace PruebaIngresoBibliotecario.Domain.Entities
     {
         public Guid Id { get; set; }
 
-       public User User { get; set; }
+        public User User { get; set; }
 
         public Book Book { get; set; }
 
