@@ -3,6 +3,7 @@ using PruebaIngresoBibliotecario.Core.Repository;
 using PruebaIngresoBibliotecario.Core.Services;
 using PruebaIngresoBibliotecario.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using PruebaIngresoBibliotecario.Domain.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 

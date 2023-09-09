@@ -5,12 +5,13 @@ namespace PruebaIngresoBibliotecario.Domain.Interfaces
 {
     public interface ILoanService
     {
-        public Task<DateTime> CalculateDateLoan(UserType UserType);
         public Task<Loan> GetLoan(Guid Id);
-        public Task<Loan> SaveLoan(CreateLoanInDto Loan);
+        public Task<CreateLoanOutDto> SaveLoan(CreateLoanInDto Loan);
+
+        public Task<DateTime> CalculateReturnDate(UserType UserType);
 
         public Task<bool> ValidateLoan(string IdUser);
         public Task<bool> ValidateUserType(UserType UserType);
-        public Task<bool> ValidateIdUser(string IdUser);
+        public Task<bool> ValidateSizeIdUser(string IdUser);
     }
 }

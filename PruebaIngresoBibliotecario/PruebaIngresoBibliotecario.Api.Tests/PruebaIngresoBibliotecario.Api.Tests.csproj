@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp6.0</TargetFramework>
     <IsPackable>false</IsPackable>
     <ProjectGuid>1098efdf-6e71-42ab-b02c-ee86d21bc08f</ProjectGuid>
     <DebugType>Full</DebugType>

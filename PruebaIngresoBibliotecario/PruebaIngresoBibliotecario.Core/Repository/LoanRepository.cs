@@ -13,14 +13,16 @@ namespace PruebaIngresoBibliotecario.Core.Repository
             _context = context;
         }
 
-        public async Task<Loan> GetLoan(Guid Id)
+        public async Task<Loan> GetLoanById(Guid Id)
         {
-            return new Loan();
+            return await _context.Loan.Where(r => r.Id == Id).FirstOrDefaultAsync();
         }
 
         public async Task<Loan> SaveLoan(Loan Loan)
         {
-            return new Loan();
+            _context.Loan.Add(Loan);
+            _context.SaveChanges();
+            return Loan;
         }
 
         public async Task<List<Loan>> GetAll()
@@ -30,7 +32,7 @@ namespace PruebaIngresoBibliotecario.Core.Repository
 
         public async Task<List<Loan>> GetLoanByIdUser(string IdUser)
         {
-            return await _context.Loan.Where(r => r.User.IdentificacionUsuario == IdUser).ToListAsync();
+            return await _context.Loan.Where(r => r.IdentificacionUsuario == IdUser).ToListAsync();
         }
     }
 }

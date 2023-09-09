@@ -5,11 +5,11 @@ VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PruebaIngresoBibliotecario.Api", "PruebaIngresoBibliotecario.Api\PruebaIngresoBibliotecario.Api.csproj", "{DCCDC2F8-6A06-48F3-B36A-C31354AE491F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebaIngresoBibliotecario.Domain", "PruebaIngresoBibliotecario.Domain\PruebaIngresoBibliotecario.Domain.csproj", "{E1A60C3A-81E1-49A1-A3B9-32191BFF2436}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PruebaIngresoBibliotecario.Domain", "PruebaIngresoBibliotecario.Domain\PruebaIngresoBibliotecario.Domain.csproj", "{E1A60C3A-81E1-49A1-A3B9-32191BFF2436}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebaIngresoBibliotecario.Core", "PruebaIngresoBibliotecario.Core\PruebaIngresoBibliotecario.Core.csproj", "{B3449016-0C96-4779-BEA7-B453728589CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PruebaIngresoBibliotecario.Core", "PruebaIngresoBibliotecario.Core\PruebaIngresoBibliotecario.Core.csproj", "{B3449016-0C96-4779-BEA7-B453728589CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebaIngresoBibliotecario.Infrastructure", "PruebaIngresoBibliotecario.Infrastructure\PruebaIngresoBibliotecario.Infrastructure.csproj", "{D389AEF8-9E4A-4A4B-805F-F4C346EAA042}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PruebaIngresoBibliotecario.Infrastructure", "PruebaIngresoBibliotecario.Infrastructure\PruebaIngresoBibliotecario.Infrastructure.csproj", "{D389AEF8-9E4A-4A4B-805F-F4C346EAA042}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
