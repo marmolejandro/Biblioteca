@@ -1,6 +1,6 @@
 # PruebaIngresoBibliotecario
 
-- Sobre el desarrollo -------------------------------------------------------------------------------------
+Sobre el desarrollo -------------------------------------------------------------------------------------
     - Arquitectura: Hexagonal
     - Plataforma: .Net 6
     - Lenguaje: C#
