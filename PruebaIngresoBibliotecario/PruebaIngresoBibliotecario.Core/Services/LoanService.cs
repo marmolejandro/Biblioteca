@@ -33,7 +33,9 @@ namespace PruebaIngresoBibliotecario.Core.Services
         public async Task<DateTime> CalculateReturnDate(UserType UserType)
         {
             var weekend = new[] { DayOfWeek.Saturday, DayOfWeek.Sunday };
+
             DateTime returnDate = DateTime.Now;
+
             int returnDays = (int)(ReturnDays)Enum.Parse(typeof(ReturnDays), UserType.ToString());
 
             for (int i = 0; i < returnDays;)
