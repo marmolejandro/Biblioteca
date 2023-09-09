@@ -1,5 +1,10 @@
 # PruebaIngresoBibliotecario
 
+- Sobre el desarrollo -------------------------------------------------------------------------------------
+    - Arquitectura: Hexagonal
+    - Plataforma: .Net 6
+    - Lenguaje: C#
+
 Reto técnico en donde se requiere un API REST para generar prestamos de libros para 3 tipos de usuario (Afiliado, Empleado e Invitado)
 
 - LÓGICA DE NEGOCIO ---------------------------------------------------------------------------------------
