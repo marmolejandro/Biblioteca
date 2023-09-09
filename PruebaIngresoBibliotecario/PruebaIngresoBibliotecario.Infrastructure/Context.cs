@@ -22,7 +22,11 @@ namespace PruebaIngresoBibliotecario.Infrastructure
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseInMemoryDatabase(databaseName: "LoanDb");
+            optionsBuilder.UseInMemoryDatabase(_config.GetSection("DataBaseName").ToString());
+        }
+        public async Task CommitAsync()
+        {
+            await SaveChangesAsync().ConfigureAwait(false);
         }
     }
 }
