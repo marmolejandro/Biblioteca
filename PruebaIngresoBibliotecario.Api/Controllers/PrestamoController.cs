@@ -19,20 +19,9 @@ namespace PruebaIngresoBibliotecario.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateLoan(CreateLoanInDto newLoan)
         {
-            if (!await _loanService.ValidateUserType(newLoan.TipoUsuario) ||
-                !await _loanService.ValidateSizeIdUser(newLoan.IdentificacionUsuario))
-            {
-                return BadRequest();
-            }
-            else if (!await _loanService.ValidateLoan(newLoan.IdentificacionUsuario))
-            {
-                ResultLoanDto Result = new ResultLoanDto();
-                Result.message = $"El usuario con identificación {newLoan.IdentificacionUsuario} ya tiene un libro prestado por lo cual no se le puede registrar otro prestamo";
+            var Response = await _loanService.SaveLoan(newLoan);
 
-                return BadRequest(Result);
-            }
-
-            return Ok(await _loanService.SaveLoan(newLoan));
+            return Ok();
         }
 
         [HttpGet("{id}")]
@@ -42,7 +31,7 @@ namespace PruebaIngresoBibliotecario.Api.Controllers
 
             if (loan == null)
             {
-                ResultLoanDto Result = new ResultLoanDto();
+                ResponseBase Result = new ResponseBase();
                 Result.message = $"El prestamo con id {id} no existe";
 
                 return BadRequest(Result);

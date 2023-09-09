@@ -21,7 +21,7 @@ namespace PruebaIngresoBibliotecario.Core.Repository
         public async Task<Loan> SaveLoan(Loan Loan)
         {
             _context.Loan.Add(Loan);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return Loan;
         }
 

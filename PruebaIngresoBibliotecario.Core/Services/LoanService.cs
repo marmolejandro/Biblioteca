@@ -1,16 +1,19 @@
 ﻿using PruebaIngresoBibliotecario.Api.Models;
-using PruebaIngresoBibliotecario.Core.Repository;
+using PruebaIngresoBibliotecario.Core.Interfaces;
 using PruebaIngresoBibliotecario.Domain.Entities;
 using PruebaIngresoBibliotecario.Domain.Interfaces;
+using PruebaIngresoBibliotecario.Domain.Models;
 
 namespace PruebaIngresoBibliotecario.Core.Services
 {
     public class LoanService : ILoanService
     {
         ILoanRepository _loanRepository;
-        public LoanService(ILoanRepository loanRepository)
+        IMapperLoan _mapperLoan;
+        public LoanService(ILoanRepository loanRepository, IMapperLoan mapperLoan)
         {
             _loanRepository = loanRepository;
+            _mapperLoan = mapperLoan;
         }
 
         public async Task<Loan> GetLoan(Guid Id)
@@ -20,17 +23,31 @@ namespace PruebaIngresoBibliotecario.Core.Services
 
         public async Task<CreateLoanOutDto> SaveLoan(CreateLoanInDto newLoan)
         {
-            Loan loanSaved = await _loanRepository.SaveLoan( await ConvertToLoan(newLoan) );
+            if (!ValidateUserType(newLoan.TipoUsuario) ||
+                !ValidateSizeIdUser(newLoan.IdentificacionUsuario))
+            {
+                return BadRequest();
+            }
+            else if (!await ValidateLoan(newLoan.IdentificacionUsuario))
+            {
+                ResponseBase Result = new ResponseBase();
+                Result.message = $"El usuario con identificación {newLoan.IdentificacionUsuario} ya tiene un libro prestado por lo cual no se le puede registrar otro prestamo";
 
-            CreateLoanOutDto _loanOut = new CreateLoanOutDto();
-            _loanOut.Id = loanSaved.Id;
-            _loanOut.FechaMaximaDevolucion = loanSaved.FechaMaximaDevolucion;
+                return BadRequest(Result);
+            }
 
-            return _loanOut;
+            DateTime returnDate = CalculateReturnDate(newLoan.TipoUsuario);
+
+            Loan loanMapped = _mapperLoan.CreateLoanInDtoToLoan(newLoan, returnDate);
+            Loan loanSaved = await _loanRepository.SaveLoan(loanMapped);
+
+            CreateLoanOutDto loanOutMapped = _mapperLoan.LoanToCreateLoanOutDto(loanSaved);
+
+            return loanOutMapped;
         }
 
 
-        public async Task<DateTime> CalculateReturnDate(UserType UserType)
+        private DateTime CalculateReturnDate(UserType UserType)
         {
             var weekend = new[] { DayOfWeek.Saturday, DayOfWeek.Sunday };
 
@@ -48,14 +65,14 @@ namespace PruebaIngresoBibliotecario.Core.Services
         }
 
 
-        public async Task<bool> ValidateLoan(string IdUser)
+        private async Task<bool> ValidateLoan(string IdUser)
         {
             List<Loan> loans = await _loanRepository.GetLoanByIdUser(IdUser);
 
             return loans.Where(r => (int)r.TipoUsuario == 1).ToList().Count == 0;
         }
 
-        public async Task<bool> ValidateUserType(UserType UserType)
+        private bool ValidateUserType(UserType UserType)
         {
             if(!Enum.IsDefined(typeof(UserType), UserType))
                 return false;
@@ -63,23 +80,9 @@ namespace PruebaIngresoBibliotecario.Core.Services
             return true;
         }
 
-        public async Task<bool> ValidateSizeIdUser(string IdUser)
+        private bool ValidateSizeIdUser(string IdUser)
         {
             return IdUser.Length <= 10;
-        }
-
-        public async Task<Loan> ConvertToLoan(CreateLoanInDto newLoan)
-        {
-            DateTime returnDate = await this.CalculateReturnDate(newLoan.TipoUsuario);
-
-            Loan loan = new Loan();
-            loan.Id = new Guid();
-            loan.IdentificacionUsuario = newLoan.IdentificacionUsuario;
-            loan.TipoUsuario = newLoan.TipoUsuario;
-            loan.Isbn = newLoan.Isbn;
-            loan.FechaMaximaDevolucion = returnDate;
-
-            return loan;
         }
     }
 }

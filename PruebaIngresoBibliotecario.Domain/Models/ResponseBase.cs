@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace PruebaIngresoBibliotecario.Domain.Models
 {
-    public class ResultLoanDto
+    public class ResponseBase
     {
-        public string message { get; set; }
+        public string mensaje { get; set; }
     }
 }
