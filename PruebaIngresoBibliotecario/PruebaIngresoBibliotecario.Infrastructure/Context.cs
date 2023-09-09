@@ -11,18 +11,18 @@ namespace PruebaIngresoBibliotecario.Infrastructure
 {
     public class Context : DbContext
     {
-        private readonly IConfiguration Config;
 
+        private readonly IConfiguration _config;
         public DbSet<Loan> Loan { get; set; }
 
         public Context(DbContextOptions<Context> options, IConfiguration config) : base(options)
-        {
-            Config = config;
+        { 
+            _config = config;
         }
 
-        public async Task CommitAsync()
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            await SaveChangesAsync().ConfigureAwait(false);
+            optionsBuilder.UseInMemoryDatabase(databaseName: "LoanDb");
         }
     }
 }
