@@ -2,7 +2,7 @@
 
 Reto técnico en donde se requiere un API REST para generar prestamos de libros para 3 tipos de usuario (Afiliado, Empleado e Invitado)
 
-Sobre el desarrollo -------------------------------------------------------------------------------------
+- Sobre el desarrollo -------------------------------------------------------------------------------------
     - Arquitectura: Hexagonal
     - Plataforma: .Net 6
     - Lenguaje: C#
