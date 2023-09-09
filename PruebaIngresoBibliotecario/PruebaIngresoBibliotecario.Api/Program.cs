@@ -12,7 +12,7 @@ builder.Services.AddScoped<ILoanRepository, LoanRepository>();
 builder.Services.AddScoped<ILoanService, LoanService>();
 
 
-builder.Services.AddDbContext<Context>(options => options.UseInMemoryDatabase(builder.Configuration.GetSection("DataBaseName").ToString()));
+builder.Services.AddDbContext<LoanContext>(options => options.UseInMemoryDatabase(builder.Configuration.GetSection("DataBaseName").ToString()));
 
 
 // Add services to the container.

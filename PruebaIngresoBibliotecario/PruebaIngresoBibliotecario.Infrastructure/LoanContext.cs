@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace PruebaIngresoBibliotecario.Infrastructure
 {
-    public class Context : DbContext
+    public class LoanContext : DbContext
     {
 
         private readonly IConfiguration _config;
         public DbSet<Loan> Loan { get; set; }
 
-        public Context(DbContextOptions<Context> options, IConfiguration config) : base(options)
+        public LoanContext(DbContextOptions<LoanContext> options, IConfiguration config) : base(options)
         { 
             _config = config;
         }

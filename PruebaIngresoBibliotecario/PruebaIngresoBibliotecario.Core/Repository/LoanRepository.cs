@@ -11,8 +11,8 @@ namespace PruebaIngresoBibliotecario.Core.Repository
 {
     public class LoanRepository : ILoanRepository
     {
-        Context _context;
-        public LoanRepository(Context context)
+        LoanContext _context;
+        public LoanRepository(LoanContext context)
         {
             _context = context;
         }
